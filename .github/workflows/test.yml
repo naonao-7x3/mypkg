@@ -1,0 +1,14 @@
+
+name: test
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: ros:jazzy
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ros2_ws/src/mypkg
+      - name: build and test
+        run: bash -xv ./ros2_ws/src/mypkg/test/test.bash $GITHUB_WORKSPACE
